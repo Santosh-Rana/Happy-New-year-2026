@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year Friend's 2026</title>
+<link rel="preload" as="image" href="https://pngfre.com/wp-content/uploads/lord-shiva-28-2.png" fetchpriority="high">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+html,body{
+  margin:0;padding:0;height:100%;
+  background:#000010;overflow:hidden;
+}
+canvas{position:fixed;inset:0;z-index:1;}
+#content{
+  position:fixed;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  z-index:5;pointer-events:none;
+}
+h1{
+  text-align:center;
+  margin:0;
+  line-height:1.15;
+}
+
+.line1{
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  color:#ffffff;
+  letter-spacing:0.12em;
+  margin-bottom:0.6rem;
+}
+
+.name{
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight:700;
+  background:linear-gradient(120deg,#ff3cac,#784ba0,#2b86c5,#00ffd5,#ff3cac);
+  background-size:400% 400%;
+  -webkit-background-clip:text;
+  color:transparent;
+  margin:0.6rem 0 0.7rem;
+}
+
+.year{
+  font-size: clamp(2.2rem, 4.8vw, 4rem);
+  letter-spacing:0.45em;
+  margin-top:0.4rem;
+  color:#ffffff;
+}
+
+
+@media (max-width:600px){
+  .line1{
+    font-size: clamp(2.4rem, 9vw, 4.2rem);
+  }
+
+  .year{
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .name{
+    margin:0.8rem 0 0.9rem;
+  }
+}
+
+
+
+/* TAP HINT */
+#tapHint{
+  position:fixed;bottom:18%;left:50%;
+  transform:translateX(-50%);
+  z-index:10;text-align:center;
+  pointer-events: none; /* Let clicks pass through to canvas */
+}
+#tapHint .finger{
+  display:inline-block;
+  font-size:64px;
+  background:linear-gradient(45deg,#ff3cac,#784ba0,#2b86c5,#00ffd5,#FFD700);
+  background-size:400% 400%;
+  -webkit-background-clip:text;
+  color:transparent;
+  filter:drop-shadow(0 0 12px #FFD700aa);
+  animation:fingerGradient 3s linear infinite, fingerPulse 1s ease-in-out infinite alternate;
+}
+#tapHint span.label{
+  display:block;color:white;
+  letter-spacing:.25em;font-size:12px;
+  margin-top:4px;
+}
+
+/* Finger animation gradient */
+@keyframes fingerGradient {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+/* Finger subtle pulse */
+@keyframes fingerPulse {
+  0%{transform:scale(1);}
+  100%{transform:scale(1.15);}
+}
+/* SHIV IMAGE BLOCK */
+#shivBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5vh;
+  position:fixed;
+  top:10px;
+  right:70px;
+  
+}
+
+#shivBlock img {
+  width: 22vw;
+  max-width: 220px;
+  min-width: 120px;
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.6));
+}
+
+#mahadev {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+  color: #FFD700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+}
+
+/* Mobile tuning */
+@media(max-width:600px) {
+  #shivBlock img {
+    width: 40vw;
+  }
+  
+  #mahadev {
+    font-size: 0.9rem;
+  }
+}
+
+#mahadev span {
+  display: inline-block;
+  background: linear-gradient(120deg, #ff3cac, #784ba0, #2b86c5, #00ffd5, #FFD700);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+.copy{
+  color:white;
+  position:fixed;
+  bottom:5px;
+  text-align:center;
+  right:70px;
+  font-size:12px;
+}
+
+</style>
+</head>
+
+<body>
+ <div id="content">
+  <div>
+    
+    <!-- SHIV IMAGE -->
+    <div id="shivBlock">
+     <img 
+  src="https://pngfre.com/wp-content/uploads/lord-shiva-28-2.png"
+  alt="Lord Shiva"
+  loading="eager"
+  decoding="sync"
+  fetchpriority="high">
+<div id="mahadev" aria-label="Har Har Mahadev">
+  HAR HAR MAHADEV
+</div>
+
+      
+    </div>
+
+
+<audio id="bgMusic" loop>
+  <source src="holiday-new-year-347831.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="fw"></canvas>
+
+<div id="content">
+  <h1 id="greet">
+    <div class="line1">Happy New Year</div>
+  <div class="name" id="personName">Friend's </div>
+
+    <div class="year">2026</div>
+  </h1>
+</div>
+
+<div id="tapHint">
+  <span class="material-icons finger">touch_app</span>
+  <span class="label">TAP FOR MUSIC</span>
+</div>
+
+<div class="copy">© 2026 Santosh. All Rights Reserved.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+<script>
+const shivImg = new Image();
+shivImg.src = "https://pngfre.com/wp-content/uploads/lord-shiva-28-2.png";
+shivImg.decode().catch(()=>{});
+</script>
+<script>
+const mahadev = document.getElementById("mahadev");
+const text = mahadev.innerText;
+mahadev.innerHTML = "";
+
+[...text].forEach(char => {
+  const span = document.createElement("span");
+  span.innerHTML = char === " " ? "&nbsp;" : char;
+  mahadev.appendChild(span);
+});
+</script>
+
+<script>
+gsap.to("#mahadev span", {
+  backgroundPosition: "400% 50%",
+  duration: 6,    // speed of gradient flow
+  repeat: -1,
+  ease: "none",
+  stagger: 0.05   // slight delay for each letter
+});
+</script>
+
+
+
+<script>
+/* ================= TEXT ================= */
+gsap.to(".name",{backgroundPosition:"400% 50%",duration:12,repeat:-1,ease:"none"});
+gsap.timeline({repeat:-1,repeatDelay:2})
+.fromTo("#greet",{scale:.9,opacity:0},{scale:1,opacity:1,duration:1.5,ease:"elastic.out(1,.4)"})
+.to("#greet",{scale:1.03,duration:3.5,ease:"sine.inOut"})
+.to("#greet",{scale:.92,opacity:0,duration:1.3});
+
+
+
+/* TAP HINT */
+const tapHint = document.getElementById("tapHint");
+gsap.fromTo("#tapHint",{opacity:0},{opacity:1,duration:1,delay:3});
+
+/* ================= CANVAS ================= */
+const canvas=document.getElementById("fw");
+const ctx=canvas.getContext("2d");
+let w,h;
+const dpr = window.devicePixelRatio || 1;
+
+function resize(){
+  w = innerWidth;
+  h = innerHeight;
+
+  canvas.width  = w * dpr;
+  canvas.height = h * dpr;
+
+  canvas.style.width  = w + "px";
+  canvas.style.height = h + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+
+resize();addEventListener("resize",resize);
+
+/* ================= BASE FIREWORKS ================= */
+const rockets=[],confetti=[];
+const fwColors=["#ff3cac","#ffd700","#00ffd5","#2b86c5","#ff8c00"];
+function launchRocket(){
+  if(rockets.length<5){
+    rockets.push({x:Math.random()*w,y:h+20,vy:-9-Math.random()*2,ty:Math.random()*h*.45});
+  }
+}
+function explodePaper(x,y){
+  for(let i=0;i<18;i++){
+    confetti.push({
+      x,y,
+      vx:(Math.random()-0.5)*5,
+      vy:(Math.random()-1.2)*5,
+      g:0.18,
+      life:110,
+      rot:Math.random()*Math.PI,
+      vr:(Math.random()-0.5)*0.25,
+      c:fwColors[Math.floor(Math.random()*fwColors.length)]
+    });
+  }
+}
+
+/* ================= TAP EFFECTS & MUSIC TRIGGER ================= */
+const tapParticles=[];
+function flowerBurst(x,y){for(let i=0;i<36;i++){const a=i/36*Math.PI*2;tapParticles.push({x,y,vx:Math.cos(a)*4,vy:Math.sin(a)*4,g:.1,life:140,type:"flower",c:fwColors[i%fwColors.length]});}}
+function diamondBurst(x,y){for(let i=0;i<30;i++){tapParticles.push({x,y,vx:(Math.random()-.5)*7,vy:(Math.random()-1)*6,g:.15,life:130,type:"diamond",c:"#00ffd5"});}}
+function coinRain(x,y){for(let i=0;i<28;i++){tapParticles.push({x,y,vx:(Math.random()-.5)*3,vy:-Math.random()*6,g:.25,life:160,type:"coin",c:"#FFD700"});}}
+function heartBurst(x,y){for(let i=0;i<26;i++){tapParticles.push({x,y,vx:(Math.random()-.5)*5,vy:(Math.random()-1)*5,g:.12,life:150,type:"heart",c:"#ff4d6d"});}}
+function spiralBurst(x,y){for(let i=0;i<48;i++){const a=i/48*Math.PI*2;tapParticles.push({x,y,vx:Math.cos(a)*5,vy:Math.sin(a)*5-2,g:.12,life:180,type:"paper",c:"#FFD700"});}}
+const tapEffects=[flowerBurst,diamondBurst,coinRain,heartBurst,spiralBurst];
+
+// AUDIO LOGIC
+const audio = document.getElementById("bgMusic");
+let musicStarted = false;
+
+window.addEventListener("pointerdown", (e) => {
+  // 1. Play Effect
+  tapEffects[Math.floor(Math.random()*tapEffects.length)](e.clientX,e.clientY);
+  
+  // 2. Hide Hint
+  gsap.to("#tapHint", {opacity:0, duration: 0.5});
+
+  // 3. Play Music (if not already playing)
+  if (!musicStarted) {
+    audio.play().then(() => {
+      musicStarted = true;
+    }).catch(err => {
+      console.log("Audio interaction required");
+    });
+  }
+});
+
+/* ================= DRAW LOOP ================= */
+function drawTap(p){
+  ctx.save();ctx.translate(p.x,p.y);ctx.fillStyle=p.c;
+  if(p.type==="diamond"){ctx.rotate(Math.PI/4);ctx.fillRect(-4,-4,8,8);}
+  else if(p.type==="coin"){ctx.beginPath();ctx.arc(0,0,4,0,Math.PI*2);ctx.fill();}
+  else if(p.type==="heart"){ctx.beginPath();ctx.moveTo(0,3);ctx.bezierCurveTo(-5,-3,-6,3,0,7);ctx.bezierCurveTo(6,3,5,-3,0,3);ctx.fill();}
+  else ctx.fillRect(-4,-2,8,4);
+  ctx.restore();
+}
+
+function loop(){
+  requestAnimationFrame(loop);
+  ctx.clearRect(0,0,w,h);
+
+  rockets.forEach((r,i)=>{
+    r.y+=r.vy;
+    ctx.fillStyle="#fff";
+    ctx.fillRect(r.x,r.y,2,2);
+    if(r.y<=r.ty){explodePaper(r.x,r.y);rockets.splice(i,1);}
+  });
+
+  for(let i=confetti.length-1;i>=0;i--){
+    const p=confetti[i];
+    p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.life--;
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;ctx.fillRect(-4,-2,8,4);ctx.restore();
+    if(p.life<=0||p.y>h+30) confetti.splice(i,1);
+  }
+
+  for(let i=tapParticles.length-1;i>=0;i--){
+    const p=tapParticles[i];
+    p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.life--;
+    drawTap(p);
+    if(p.life<=0) tapParticles.splice(i,1);
+  }
+
+  if(Math.random()<0.018) launchRocket();
+}
+loop();
+
+
+
+gsap.from("#shivBlock",{
+  opacity:0,
+  scale:0.85,
+  duration:1.2,
+  ease:"power1.out",
+  delay:0.2
+});
+
+ctx.save();
+ctx.translate(p.x, p.y);
+ctx.rotate(p.rot);
+ctx.fillStyle = p.c;
+ctx.shadowColor = p.c;
+ctx.shadowBlur = 3;
+ctx.fillRect(-5, -2.5, 10, 2);
+ctx.restore();
+
+
+
+</script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nameFromURL = params.get("name");
+
+if (nameFromURL) {
+  document.getElementById("personName").textContent = nameFromURL;
+}
+</script>
+</body>
+</html>
